@@ -205,6 +205,9 @@ function xsltProcessContext(input, template, output, _parameters) {
             case 'for-each':
                 xsltForEach(input, template, output);
                 break;
+            case 'for-each-group':
+                xsltForEachGroup(input, template, output);
+                break;
             case 'if':
                 test = xmlGetAttribute(template, 'test');
                 if (xpathEval(test, input).booleanValue()) {
@@ -386,6 +389,12 @@ function xsltForEach(input, template, output) {
         const ni = sortContext.nodelist[i];
         xsltChildNodes(sortContext.clone(ni, i), template, output);
     }
+}
+
+// Implements xslt:for-each-group
+
+function xsltForEachGroup(input, template, output) {
+
 }
 
 
